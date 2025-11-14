@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 
 # Load image in grayscale
-img = cv2.imread('assets/image.jpg', 0)
+img = cv2.imread('assets/index.jpg', 0)
 
 if img is None:
     raise FileNotFoundError("Image not found at path: assets/image.jpg")
