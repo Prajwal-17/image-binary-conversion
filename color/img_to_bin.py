@@ -12,7 +12,7 @@ import cv2
 import argparse
 import os
 
-def image_to_bin_128bits(img_path, out_bits_path="image.bin", out_dim_path="dimensions.txt"):
+def image_to_bin_128bits(img_path, out_bits_path="image.txt", out_dim_path="dimensions.txt"):
     img = cv2.imread(img_path, cv2.IMREAD_UNCHANGED)
     if img is None:
         raise FileNotFoundError(f"Could not open image: {img_path}")

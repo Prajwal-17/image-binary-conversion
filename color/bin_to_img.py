@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-BIN_PATH = "image.bin"
+BIN_PATH = "cfb_dec.txt"
 DIM_PATH = "dimensions.txt"
 OUT_IMAGE = "restored_image.png"
 
