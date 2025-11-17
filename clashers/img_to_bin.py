@@ -1,28 +1,25 @@
+# image_to_bin.py
 import numpy as np
 import cv2
 
 # Load image in grayscale
 img = cv2.imread('assets/scenary.jpg', 0)
-
 if img is None:
-    raise FileNotFoundError("Image not found at path: assets/image.jpg")
+    raise FileNotFoundError("Image not found!")
 
-# Dynamically get the actual size
 height, width = img.shape
-z = 0
-c = 0
+print(f"Image size: {width} x {height}")
 
-# Use "w" mode to overwrite existing file instead of appending
-with open("scenary.txt", "w") as f:
-    print("opened file")
+# --- Save dimensions in separate file ---
+with open("dimensions.txt", "w") as dim_file:
+    dim_file.write(f"{width} {height}")
+print("Dimensions saved in dimensions.txt")
+
+# --- Convert image to binary ---
+with open("image.bin", "w") as f:
     for i in range(height):
         for j in range(width):
-            a = int(img[i, j])
-            bits = [(a >> bit) & 1 for bit in range(7, -1, -1)]  # faster bit extraction
-            f.write(''.join(map(str, bits)))
-            c += 8
-            z += 1
-            if z == 16:
-                f.write('\n')
-                z = 0
-    print("completed")
+            pixel = img[i, j]
+            bits = format(pixel, "08b")  # faster
+            f.write(bits)
+print("Binary saved in image.bin")
