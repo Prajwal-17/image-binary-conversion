@@ -4,7 +4,7 @@ import numpy as np
 import cv2
 
 # Read the binary file
-with open("v3/dec_bin.txt", "r") as f:
+with open("v4/dec_bin.txt", "r") as f:
     data = f.read().replace("\n", "").strip()
 
 print(f"Read {len(data)} bits from file.")
@@ -23,5 +23,5 @@ pixels = [int(data[i:i+8], 2) for i in range(0, len(data), 8)]
 arr = np.array(pixels[: side * side], dtype=np.uint8).reshape((side, side))
 
 # Save the image (no GUI)
-cv2.imwrite("decrypted_imagev3.png", arr)
+cv2.imwrite("decrypted_imagev4.png", arr)
 print("✅ Image saved as decoded_image.png")
